@@ -6,7 +6,7 @@ date = 2025-08-05
 ## The Why
 To understand how this website is built, you must first understand the desired deployment structure and outcome.
 
-This site, and the computer that it's hosted on, are both built with [GNU Guix](https://guix.gnu.org/). If you've heard of [NixOS](nixos.org), it follows a very similar design (in fact, the Guix core uses the Nix core directly. If you look at the Guix source code, you'll see a `nix/` directory in the root!). Some of these include:
+This site, and the computer that it's hosted on, are both built with [GNU Guix](https://guix.gnu.org/). If you've heard of [NixOS](https://nixos.org), it follows a very similar design (in fact, the Guix core uses the Nix core directly. If you look at the Guix source code, you'll see a `nix/` directory in the root!). Some of these include:
 - Using Guile Scheme as its configuration language
     - Using Guile instead of the Nix language means that we can take full advantage of the configuration language being an actual, fully thought-out programming language first, which gives us access to all the Lisp-y stuff like macros.
 - Being libre-by-default

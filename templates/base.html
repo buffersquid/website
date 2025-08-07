@@ -2,17 +2,15 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Buffersquid</title>
         <link rel="shortcut icon" href="{{ get_url(path="squid.svg") }}?" type="image/x-icon"/>
         <link rel="stylesheet" href="{{ get_url(path="style.css") }}">
     </head>
-    <body>
-        <img
-            src="squid.svg"
-            alt="buffersquid logo"
-            height="500"
-            width="500"
-            id="squid-pic"
-        />
+    <body class="center">
+        <header class="site-header">
+            <h1 class="title"><a href="{{ config.base_url }}">Buffersquid</a></h1>
+        </header>
+        {% block content %} {% endblock %}
     </body>
 </html>

@@ -1,5 +1,75 @@
-#squid-pic {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+// For variables
+:root {
+  --background: #1A1A1A; // black
+  --content-background: #2c3d0c; // light blue
+  --border: #8e4a49;
+
+  --text-main: white;
+  --link: #00F6ED; // cyan
+  --subheader: #6A8EAE;
 }
+
+body {
+  background-color: var(--background);
+  color: var(--text-main);
+  font-family: 'JetBrainsMono', Menlo, DejaVu Sans Mono, Monaco, Consolas, Ubuntu Mono, monospace;
+  a {
+    color: var(--link);
+  }
+}
+
+.center {
+  margin: 0 auto;
+  max-width: 58rem;
+  padding: 20px;
+}
+
+// Generic container
+.container {
+  background-color: var(--content-background);
+  border: 0.35rem solid var(--border);
+  border-radius: 1rem;
+  min-height: 40rem;
+  padding: 20px;
+}
+
+// Header (site-wide)
+.site-header {
+  background-color: var(--content-background);
+  text-align: center;
+  border: 0.35rem solid var(--border);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+
+  .title a {
+    text-decoration: none;
+    color: var(--text-main);
+  }
+}
+
+.home {
+  @extend .container;
+  .links {
+    padding-bottom: 20px;
+    a {
+      font-size: 1.5rem;
+    }
+    .date {
+      font-weight: bold;
+    }
+  }
+}
+
+.post {
+  @extend .container;
+  .post-header {
+    .post-header-title {
+      font-size: 2rem;
+    }
+    .date {
+      font-weight: bold;
+    }
+  }
+}
+
+@import 'codeblock';

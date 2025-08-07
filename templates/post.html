@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="post">
+        <div class="post-header">
+            <div class="post-header-title">{{ page.title }}</div>
+            <div>
+                <span class="date">{{ page.date }} • </span>{{ page.description }}
+            </div>
+            <hr/>
+        </div>
+        {{ page.content | safe }}
+    </div>
+{%endblock content %}

@@ -3,6 +3,7 @@ title = "Website and Infrastructure"
 description = "And why does it look like that?"
 date = 2025-08-05
 +++
+
 ## The Why
 To understand how this website is built, you must first understand the desired deployment structure and outcome.
 

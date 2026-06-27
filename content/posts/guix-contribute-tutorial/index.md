@@ -30,13 +30,13 @@ Download the source code of the package and version you want to build and make s
 
 We will run:
 ```sh
-guix import -i gnu/packages/rust-crates.scm crate -f /path/to/Cargo.lock PACKAGE
+guix import -i gnu/packages/rust-crates.scheme crate -f /path/to/Cargo.lock PACKAGE
 ```
-Where `gnu/packages/rust-crates.scm` points to the `rust-crates.scm` file of the forked repo we just downloaded and PACKAGE is the name of what package you want to add. In our case, PACKAGE was `zola`.
+Where `gnu/packages/rust-crates.scheme` points to the `rust-crates.scheme` file of the forked repo we just downloaded and PACKAGE is the name of what package you want to add. In our case, PACKAGE was `zola`.
 
-This will then populate `gnu/packages/rust-crates.scm` with a bunch of dependencies. Take a look through this code (using `git diff`) and make sure there are no `TODO` comments in the new dependencies. The biggest one that I ran into was:
+This will then populate `gnu/packages/rust-crates.scheme` with a bunch of dependencies. Take a look through this code (using `git diff`) and make sure there are no `TODO` comments in the new dependencies. The biggest one that I ran into was:
 
-```scm
+```scheme
 ;;; TODO: Check package for bundled sources
 ```
 
@@ -44,7 +44,7 @@ This happens with rust packages sometimes since rust can pull in binaries during
 
 I had this in the package `rust-libwebp-sys-0.9.6`. After taking a look at the source code, it was found that the package uses a C-based binary in the `vendor` directory. Thus we needed to manually patch this dependency like:
 
-```scm
+```scheme
 (define rust-libwebp-sys-0.9.6
   (crate-source "libwebp-sys" "0.9.6"
                 "0cv7hxzh9p66q5c4ay30bvffh0y66abwmr2nliscwrbigkgk1kal"
@@ -69,7 +69,7 @@ This pulls out the bundled sources and builds everything from source.
 
 After getting our dependencies locked in, we can build out the actual build for the package we want.
 
-```scm
+```scheme
 (define-public zola
   (package
     (name "zola")
@@ -128,12 +128,12 @@ It supports taxonomies, shortcodes, and live reloading.")
 
 Most of this is a normal guix derivation, which maybe I will describe in more detail in a future blog post. The important part for this tutorial is the snippet:
 
-```scm
+```scheme
 (inputs (cons* libwebp oniguruma
                (cargo-inputs 'zola)))
 ```
 
-This is where we pull in all those cargo dependencies into the inputs of our build. So everything that is defined as a "zola dependency" within `gnu/packages/rust-crates.scm` is used as an input for our package.
+This is where we pull in all those cargo dependencies into the inputs of our build. So everything that is defined as a "zola dependency" within `gnu/packages/rust-crates.scheme` is used as an input for our package.
 
 ## Step 3: Build the package
 

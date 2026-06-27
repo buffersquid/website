@@ -30,7 +30,7 @@ Running the above command will spit out a Guix package definition that you can f
 
 Now that we have a successful build of Zola, we can move on to packaging this website using our new Zola package. The package definition looks like:
 
-```scm
+```scheme
 (define-module (buffersquid packages website)
   #:use-module (guix packages)
   #:use-module (guix git-download)
@@ -107,7 +107,7 @@ Now that we have both our website package and our domain name pointing to the co
 
 Here is the Guix code for accomplishing this:
 
-```scm
+```scheme
 (define-module (buffersquid system website)
   #:use-module (guix gexp)
   #:use-module (gnu services)

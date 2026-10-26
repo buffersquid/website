@@ -1,0 +1,8 @@
+name = "buffersquid"
+compatibility_date = "2026-10-25"
+
+[build]
+command = "bash ./cloudflare-build.sh"
+
+[assets]
+directory = "./public"
